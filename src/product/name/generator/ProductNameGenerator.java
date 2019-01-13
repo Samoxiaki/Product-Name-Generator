@@ -7,7 +7,6 @@ package product.name.generator;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.Random;
 
@@ -22,8 +21,8 @@ public class ProductNameGenerator {
     private final static char[] lowerCase = "qwertyuiopasdfghjklzxcvbnm".toCharArray();
 
     private final static int defSamples = 25;
-    private final static String defFormat = "NNxxx";
-    private final static String defMask = "AAxxx";
+    private final static String defFormat = "NNcxxxxn";
+    private final static String defMask = "aa-aaaaa";
 
     private final static Random RNG = new Random();
 
@@ -32,24 +31,24 @@ public class ProductNameGenerator {
     private static String mask;
 
     public static void main(String[] args) {
-        if(parseArgs(args)){
-            StringBuilder sb= new StringBuilder();
-            for(int i=0; i<samples; i++){
-                String generated= genName(format, mask);
+        if (parseArgs(args)) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < samples; i++) {
+                String generated = genName(format, mask);
                 sb.append(generated);
                 sb.append("\n");
                 System.out.println(generated);
             }
-            try{
-                BufferedOutputStream bos= new BufferedOutputStream(new FileOutputStream(new File("generated.txt")));
+            try {
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File("generated.txt")));
                 bos.write(sb.toString().getBytes());
                 bos.close();
                 System.out.println("[+] Saved as generated.txt");
             }
-            catch(Exception e){
+            catch (Exception e) {
                 System.out.println("[!] Unable to save as generated.txt");
             }
-            
+
         }
     }
 
@@ -114,7 +113,7 @@ public class ProductNameGenerator {
 
     public static void printUsage() {
         System.out.println("Usage:");
-        System.out.println("java Product-Name-Generator [SAMPLES] [FORMAT] [MASK] [MASK_VALUE]");
+        System.out.println("java -jar Product-Name-Generator.jar [SAMPLES] [FORMAT] [MASK] [MASK_VALUE]");
         System.out.println("    SAMPLES:    Number of samples to generate.");
         System.out.println("                Default [" + defSamples + "]");
         System.out.println("    FORMAT:     N: uppercase, n: lowercase, x: number, c: custom");
