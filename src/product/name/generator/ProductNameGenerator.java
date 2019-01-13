@@ -112,8 +112,8 @@ public class ProductNameGenerator {
     }
 
     public static void printUsage() {
-        System.out.println("Usage:");
-        System.out.println("java -jar Product-Name-Generator.jar [SAMPLES] [FORMAT] [MASK] [MASK_VALUE]");
+        System.out.println("Usage:\n");
+        System.out.println("java -jar Product-Name-Generator.jar [SAMPLES] [FORMAT] [MASK]\n");
         System.out.println("    SAMPLES:    Number of samples to generate.");
         System.out.println("                Default [" + defSamples + "]");
         System.out.println("    FORMAT:     N: uppercase, n: lowercase, x: number, c: custom");
