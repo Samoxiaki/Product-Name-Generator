@@ -67,6 +67,7 @@ public class ProductNameGenerator {
 
             try { // Assign samples
                 samples = Integer.parseInt(args[0]);
+                maskEn=false;
             }
             catch (NumberFormatException NFE) {
                 System.out.println("[SAMPLES] Unknown value: " + args[0]);
@@ -101,7 +102,9 @@ public class ProductNameGenerator {
             }
             else {
                 mask = defMask;
-                maskEn = mask.length()==format.length();
+                if(!maskEn){
+                    maskEn = mask.length()==format.length();
+                }
             }
 
             return true;
@@ -130,7 +133,7 @@ public class ProductNameGenerator {
 
     public static String genName(String format, String mask) {
         int len = format.length();
-        if (mask.length() != len && !maskEn) {
+        if (mask.length() != len && maskEn) {
             return null;
         }
 
