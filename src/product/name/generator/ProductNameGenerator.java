@@ -29,6 +29,7 @@ public class ProductNameGenerator {
     private static int samples;
     private static String format;
     private static String mask;
+    private static boolean maskEn;
 
     public static void main(String[] args) {
         if (parseArgs(args)) {
@@ -82,9 +83,11 @@ public class ProductNameGenerator {
                     }
                 }
                 format = arg;
+                maskEn=false;
             }
             else {
                 format = defFormat;
+                maskEn=true;
             }
 
             if (args.length > 2) { // Mask
@@ -94,9 +97,11 @@ public class ProductNameGenerator {
                     return false;
                 }
                 mask = args[2];
+                maskEn = true; 
             }
             else {
                 mask = defMask;
+                maskEn = mask.length()==format.length();
             }
 
             return true;
@@ -106,6 +111,7 @@ public class ProductNameGenerator {
             samples = defSamples;
             format = defFormat;
             mask = defMask;
+            maskEn= true;
             return true;
         }
 
@@ -124,7 +130,7 @@ public class ProductNameGenerator {
 
     public static String genName(String format, String mask) {
         int len = format.length();
-        if (mask.length() != len) {
+        if (mask.length() != len && !maskEn) {
             return null;
         }
 
