@@ -118,7 +118,7 @@ public class ProductNameGenerator {
         System.out.println("                Default [" + defSamples + "]");
         System.out.println("    FORMAT:     N: uppercase, n: lowercase, x: number, c: custom");
         System.out.println("                Default [" + defFormat + "]");
-        System.out.println("    MASK:       Set custom chars where is a 'c' placed in FORMAT");
+        System.out.println("    MASK:       Set custom chars where 'c' is placed in FORMAT");
         System.out.println("                Default [" + defMask + "]");
     }
 
